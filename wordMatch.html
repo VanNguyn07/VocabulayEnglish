@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghép Từ - Vocab English</title>
+  <link rel="stylesheet" href="games.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-header">
+      <h2>Trò Chơi Ghép Từ</h2>
+    </div>
+
+    <div class="game-instructions">
+      <h4>Hướng dẫn - Ghép Từ</h4>
+      <ol>
+        <li>Nhấp vào các thẻ từ và nghĩa để ghép đôi chúng</li>
+        <li>Ghép đúng, thẻ sẽ chuyển màu xanh</li>
+        <li>Ghép tất cả các cặp để hoàn thành trò chơi</li>
+      </ol>
+    </div>
+
+    <div class="game-stats">
+      <div class="game-score">Điểm: <span id="matchScore">0</span></div>
+      <div class="game-timer" id="matchTimer">02:00</div>
+      <div class="words-found">Đã ghép: <span id="pairsFound">0</span>/<span id="totalPairs">8</span></div>
+    </div>
+
+    <div class="word-match-container" id="wordMatchContainer">
+      <!-- Words -->
+      <div class="match-card" data-pair="1">apple</div>
+      <div class="match-card" data-pair="2">book</div>
+      <div class="match-card" data-pair="3">house</div>
+      <div class="match-card" data-pair="4">water</div>
+      <div class="match-card" data-pair="5">school</div>
+      <div class="match-card" data-pair="6">friend</div>
+      <div class="match-card" data-pair="7">computer</div>
+      <div class="match-card" data-pair="8">teacher</div>
+      
+      <!-- Meanings -->
+      <div class="match-card" data-pair="1">quả táo</div>
+      <div class="match-card" data-pair="2">quyển sách</div>
+      <div class="match-card" data-pair="3">ngôi nhà</div>
+      <div class="match-card" data-pair="4">nước</div>
+      <div class="match-card" data-pair="5">trường học</div>
+      <div class="match-card" data-pair="6">bạn bè</div>
+      <div class="match-card" data-pair="7">máy tính</div>
+      <div class="match-card" data-pair="8">giáo viên</div>
+    </div>
+
+    <div class="game-controls">
+      <button class="btn btn-primary" id="newMatchGame">Trò chơi mới</button>
+      <button class="btn btn-secondary" id="hintButton">Gợi ý</button>
+      <button class="btn btn-danger" id="endMatchGame">Kết thúc</button>
+    </div>
+  </div>
+</body>
+</html>

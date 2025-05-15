@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghép Nhanh - Vocab English</title>
+  <link rel="stylesheet" href="games.css">
+  <style>
+    /* Bổ sung CSS cho Speed Match */
+    .speed-match-container {
+      position: relative;
+      padding-top: 50px;
+    }
+    
+    .game-timer {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: var(--primary-color);
+      border-radius: 30px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .score-streak {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: #fff;
+      border-radius: 30px;
+      padding: 5px 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+    }
+    
+    .streak-counter {
+      color: var(--accent-color);
+      margin-left: 10px;
+    }
+    
+    .current-word {
+      position: relative;
+      width: 300px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .feedback-indicator {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--success-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .feedback-indicator.correct {
+      background-color: var(--success-color);
+      opacity: 1;
+    }
+    
+    .feedback-indicator.incorrect {
+      background-color: var(--danger-color);
+      opacity: 1;
+    }
+    
+    .meaning-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .meaning-option {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .meaning-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .progress-bar-fill {
+      height: 100%;
+      background-color: var(--primary-color);
+      width: 100%;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="game-header">
+      <h2>Trò Chơi Ghép Nhanh</h2>
+    </div>
+
+    <div class="game-instructions">
+      <h4>Hướng dẫn - Ghép Nhanh</h4>
+      <ol>
+        <li>Ghép từ tiếng Anh với nghĩa tiếng Việt</li>
+        <li>Hoàn thành càng nhiều cặp càng tốt trong thời gian giới hạn</li>
+        <li>Đoán đúng được cộng điểm, đoán sai bị trừ điểm</li>
+      </ol>
+    </div>
+
+    <div class="speed-match-container">
+      <div class="game-timer" id="speedMatchTimer">00:30</div>
+      
+      <div class="score-streak">
+        <span>Điểm: <span id="speedMatchScore">0</span></span>
+        <span class="streak-counter">Streak: <span id="currentStreak">0</span></span>
+      </div>
+      
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="timeProgressBar"></div>
+      </div>
+      
+      <div class="current-word" id="currentSpeedWord">
+        Apple
+        <div class="feedback-indicator" id="feedbackIndicator">
+          <i class="fas fa-check"></i>
+        </div>
+      </div>
+      
+      <div class="meaning-options" id="meaningOptions">
+        <button class="meaning-option">Quả táo</button>
+        <button class="meaning-option">Con mèo</button>
+        <button class="meaning-option">Cái bàn</button>
+        <button class="meaning-option">Cây bút</button>
+      </div>
+      
+      <div class="game-stats">
+        <div class="stat-item">
+          <span class="stat-label">Đúng:</span>
+          <span class="stat-value" id="correctAnswers">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Sai:</span>
+          <span class="stat-value" id="incorrectAnswers">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Chính xác:</span>
+          <span class="stat-value" id="accuracyRate">0%</span>
+        </div>
+      </div>
+      
+      <div class="game-controls">
+        <button class="btn btn-primary" id="startSpeedMatch">Bắt đầu</button>
+        <button class="btn btn-danger" id="endSpeedMatch">Kết thúc</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
